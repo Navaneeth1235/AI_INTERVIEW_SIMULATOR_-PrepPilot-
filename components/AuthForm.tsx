@@ -3,34 +3,44 @@ import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form" 
 import { z } from "zod"
 import { Button } from "./ui/button"
-import {
-    Form,
-    FormControl,
-    FormDescription,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
-} from "./ui/form"
-import { Input } from "./ui/input"
+import { Form } from "./ui/form"
 import Image from "next/image"
+import Link from "next/link"
+import {toast} from "sonner"
+import FormField from "./FormField"
 
-
-const formSchema = z.object({
-    username: z.string().min(2).max(50),
-})
-
+const authFormSchema = (type:FormType) => {
+  return z.object({
+    name: type === 'sign-up' ? z.string().min(3) : z.string().optional(),
+    email:z.string().email(),
+    password: z.string().min(3)
+  })
+}
 
 const AuthForm = ({ type}:{type:FormType}) => {
+  const formSchema = authFormSchema(type)
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      username:"",
+      name:"",
+      email: "",
+      password:"",
     },
   })
 
   function onSubmit(values: z.infer<typeof formSchema>){
-    console.log(values)
+    try{
+      if(type === 'sign-up'){
+        console.log('SIGN UP', values);
+      } else{
+        console.log('SIGN IN', values);
+      }
+
+    } catch(error){
+      console.log(error);
+      toast.error(`There was an error: ${error}`)
+    }
   }
 
   const isSignIn =  type ==="sign-in";
@@ -51,19 +61,19 @@ const AuthForm = ({ type}:{type:FormType}) => {
       
         <Form {...form}>
           <form onSubmit={form.handleSubmit(onSubmit)} className="w-full space-y-6 mt-4 form">
-            {!isSignIn && <p>Name</p>} 
-            <p>Email</p>
-            <p>Password</p>
+            {!isSignIn && <FormField control={form.control} name="name" label="Name" placeholder="Name"/>} 
+            <FormField control={form.control} name="email" label="Email" placeholder="Your Email address" type = "email"/>
+            <FormField control={form.control} name="password" label="Password" placeholder="Enter your Password" type = "password"/>
             
-            <Button className = "btn" type= "submit">{isSignIn ? 'Sign in' : 'Create an Account'}Submit</Button>
+            <Button className = "btn" type= "submit">{isSignIn ? 'Sign in' : 'Create an Account'}</Button>
           </form>
         </Form>
 
         <p className="text-center">
-          {isSignIn ? 'No account yet': 'Have an account already?'}
-          <link href = {!isSignIn ? '/sign-in' : '/sign-up'} className = "font-bold text-user-primary ml-1">
+          {isSignIn ? 'No account yet?': 'Have an account already?'}
+          <Link href = {!isSignIn ? '/sign-in' : '/sign-up'} className = "font-bold text-user-primary ml-1">
               {!isSignIn ? "Sign in" :"Sign up"}
-          </link>
+          </Link>
         </p>
     </div>
     </div>
