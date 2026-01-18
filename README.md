@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎯 PrepPilot – AI Interview Simulator
 
-## Getting Started
+PrepPilot is an AI-powered interview preparation platform designed to help candidates practice real-world technical and behavioral interviews in a structured, interactive way.
 
-First, run the development server:
+The platform simulates interview scenarios, provides curated interview sets, and aims to evolve into a full AI-driven interviewer experience.
 
-```bash
+---
+
+## 🚀 Features
+
+- 🧠 **AI-driven interview simulations** (in progress)
+- 📋 **Curated interview sets** for different roles and levels
+- 🧩 **Role-based interview cards**
+- 🔐 **Authentication-ready architecture**
+- ⚡ Built with **modern Next.js App Router**
+- 🎨 Clean UI using **shadcn/ui + Tailwind CSS**
+- 🧱 Scalable and modular component structure
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: Next.js (App Router), React, TypeScript
+- **Styling**: Tailwind CSS, shadcn/ui
+- **Forms**: React Hook Form + Zod
+- **State & Logic**: Server Components + Client Components
+- **Version Control**: Git & GitHub (SSH-based workflow)
+
+---
+
+## 📁 Project Structure
+
+```text
+app/
+ ├─ (root)/
+ │   └─ page.tsx
+ ├─ (auth)/
+ │   ├─ sign-in/
+ │   └─ sign-up/
+components/
+ ├─ AuthForm.tsx
+ ├─ InterviewCard.tsx
+ └─ ui/
+constants/
+ └─ index.ts
+
+🖥️ Getting Started
+1️⃣ Clone the repository
+git clone git@github.com:Navaneeth1235/AI_INTERVIEW_SIMULATOR_-PrepPilot-.git
+
+2️⃣ Install dependencies
+npm install
+
+3️⃣ Run the development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Open http://localhost:3000 in your browser.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+🔐 Git & SSH Setup
 
-## Learn More
+This project uses an SSH-based Git workflow with separated keys for personal and company accounts.
 
-To learn more about Next.js, take a look at the following resources:
+If you’re cloning this repo, ensure your SSH key is added to GitHub.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+👨‍💻 Author
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Navaneeth Gowda
 
-## Deploy on Vercel
+GitHub: https://github.com/Navaneeth1235
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Focus: AI, Full-Stack Development, Interview Systems
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+📜 License
+
+This project is currently under development and not yet licensed for redistribution.
